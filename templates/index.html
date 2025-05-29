@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card max-w-2xl mx-auto">
+    <div class="flex items-center mb-4">
+        <span class="text-4xl mr-3">🐄</span>
+        <h2 class="text-2xl font-bold">Welcome to Programming Herd Mentality!</h2>
+    </div>
+    
+    <p class="mb-4">In this game, you'll answer programming-related questions. Points are awarded to players who give the same answer as the majority. The goal is to think like the herd!</p>
+    <p class="mb-4 italic">Remember: Good programmers think alike! 🐮</p>
+    
+    <form action="{{ url_for('setup') }}" method="post" class="mt-6">
+        <div class="mb-4">
+            <label for="player_names" class="block text-gray-700 font-semibold mb-2">Enter Player Names (one per line):</label>
+            <textarea id="player_names" name="player_names" rows="5" class="input-field" placeholder="Alice&#10;Bob&#10;Charlie" required></textarea>
+        </div>
+        
+        <div class="mb-6">
+            <label for="num_rounds" class="block text-gray-700 font-semibold mb-2">Number of Rounds:</label>
+            <input type="number" id="num_rounds" name="num_rounds" min="1" max="20" value="3" class="input-field" required>
+        </div>
+        
+        <div class="text-center">
+            <button type="submit" class="btn-primary px-6 py-2">Start Herding!</button>
+        </div>
+    </form>
+</div>
+
+<div class="card max-w-2xl mx-auto mt-8 border-dashed">
+    <div class="flex items-center mb-3">
+        <span class="text-3xl mr-3">🥛</span>
+        <h3 class="text-xl font-bold">How to Play</h3>
+    </div>
+    <ol class="list-decimal pl-5 space-y-2">
+        <li>Enter the names of all players in your herd</li>
+        <li>Choose how many rounds you want to play</li>
+        <li>Each player takes turns answering the programming question</li>
+        <li>Points are awarded to players who match the majority answer</li>
+        <li>The player with the most points at the end is the lead cow!</li>
+    </ol>
+    <div class="flex justify-end">
+        <span class="text-3xl transform -rotate-12">🐄</span>
+    </div>
+</div>
+{% endblock %}
