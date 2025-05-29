@@ -173,8 +173,35 @@ def game_over():
     return render_template('game_over.html', results=final_results)
 
 # Vercel serverless function handler
-def handler(request):
-    return app
+from http.server import BaseHTTPRequestHandler
+
+class handler(BaseHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        self.app = app
+        super().__init__(*args, **kwargs)
+        
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        
+        # Forward the request to Flask
+        with app.test_client() as test_client:
+            response = test_client.get(self.path)
+            self.wfile.write(response.data)
+            
+    def do_POST(self):
+        content_length = int(self.headers['Content-Length'])
+        post_data = self.rfile.read(content_length)
+        
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        
+        # Forward the request to Flask
+        with app.test_client() as test_client:
+            response = test_client.post(self.path, data=post_data)
+            self.wfile.write(response.data)
 
 # For local development
 if __name__ == '__main__':
