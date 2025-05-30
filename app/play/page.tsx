@@ -12,6 +12,7 @@ export default function PlayPage() {
   const [currentRound, setCurrentRound] = useState<number>(1);
   const [totalRounds, setTotalRounds] = useState<number>(3);
   const [game, setGame] = useState<Game | null>(null);
+  const [showPassword, setShowPassword] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     // Load game state from localStorage
@@ -53,6 +54,13 @@ export default function PlayPage() {
     setAnswers(prev => ({
       ...prev,
       [player]: answer
+    }));
+  };
+
+  const togglePasswordVisibility = (player: string) => {
+    setShowPassword(prev => ({
+      ...prev,
+      [player]: !prev[player]
     }));
   };
 
@@ -116,14 +124,27 @@ export default function PlayPage() {
                       <span className="emoji-cow">🐄</span>
                       <label htmlFor={player} className="block text-gray-700 font-semibold">{player}&apos;s Answer:</label>
                     </div>
-                    <input 
-                      type="text" 
-                      id={player} 
-                      value={answers[player] || ''} 
-                      onChange={(e) => handleAnswerChange(player, e.target.value)} 
-                      className="cow-input answer-input" 
-                      required 
-                    />
+                    <div className="relative">
+                      <input 
+                        type={showPassword[player] ? "text" : "password"} 
+                        id={player} 
+                        value={answers[player] || ''} 
+                        onChange={(e) => handleAnswerChange(player, e.target.value)} 
+                        className="cow-input answer-input pr-10" 
+                        required 
+                        placeholder="Type your answer here..."
+                      />
+                      <button 
+                        type="button"
+                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                        onClick={() => togglePasswordVisibility(player)}
+                      >
+                        {showPassword[player] ? 
+                          <span className="emoji">👁️‍🗨️</span> : 
+                          <span className="emoji">👁️</span>
+                        }
+                      </button>
+                    </div>
                     <p className="text-sm text-gray-500 mt-1 flex items-center">
                       <span className="emoji text-yellow-500">⚠️</span>
                       Other players should look away when it&apos;s not their turn!
