@@ -60,20 +60,51 @@ export default function Home() {
   return (
     <main className="min-h-screen p-8">
       <div className="container mx-auto section-spacing">
-        <header className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4 relative inline-block heading">
-            Programming Herd Mentality
-          </h1>
-          <p className="text-xl text-gray-600 mt-6 flex justify-center items-center">
-            <span className="emoji">🐄</span>
+        <header className="text-center mb-12 relative">
+          <div className="w-full overflow-hidden pointer-events-none opacity-10 mb-6">
+            <div className="flex justify-center space-x-8">
+              <span className="text-6xl transform rotate-12">🐮</span>
+              <span className="text-4xl">🐾</span>
+              <span className="text-6xl">🐄</span>
+              <span className="text-4xl">🐾</span>
+              <span className="text-6xl transform -rotate-12">🐮</span>
+            </div>
+          </div>
+          
+          <div className="relative inline-block">
+            <div className="flex justify-center mb-4">
+              <span className="emoji-cow text-5xl mx-4">🐮</span>
+              <span className="emoji-cow text-5xl mx-4">🐄</span>
+              <span className="emoji-cow text-5xl mx-4">🐮</span>
+            </div>
+            
+            <h1 className="text-5xl font-bold mb-4 relative inline-block">
+              <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-amber-700 via-amber-500 to-amber-700">
+                Programming Herd Mentality
+              </span>
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-amber-500 rounded"></span>
+              <span className="absolute -bottom-5 left-1/4 w-1/2 h-1 bg-amber-700 rounded"></span>
+            </h1>
+          </div>
+          
+          <p className="text-xl text-gray-600 mt-8 flex justify-center items-center">
+            <span className="emoji-bounce mr-2">🐄</span>
             The programming quiz where the herd mentality wins!
+            <span className="emoji-bounce ml-2">🐮</span>
           </p>
+          
+          <div className="cow-divider mt-6">
+            <span className="hoof-print">🐾</span>
+            <span className="hoof-print">🐾</span>
+            <span className="hoof-print">🐾</span>
+          </div>
         </header>
         
-        <div className="max-w-2xl mx-auto card p-8 relative overflow-hidden">
+        <div className="max-w-2xl mx-auto cow-card p-8 relative overflow-hidden">
+          <div className="cow-spots"></div>
           
           <h2 className="text-2xl font-bold mb-6 flex items-center">
-            <span className="emoji">🥛</span>
+            <span className="emoji-cow">🥛</span>
             Round Up Your Herd
           </h2>
           
@@ -86,7 +117,7 @@ export default function Home() {
             
             <div className="mb-6">
               <label className="block text-gray-700 font-semibold mb-2 flex items-center">
-                <span className="emoji">🐄</span>
+                <span className="emoji-cow">🐄</span>
                 Number of Rounds:
               </label>
               <input 
@@ -95,13 +126,13 @@ export default function Home() {
                 max="10" 
                 value={numRounds} 
                 onChange={(e) => setNumRounds(parseInt(e.target.value) || 3)} 
-                className="input w-32" 
+                className="cow-input w-32" 
               />
             </div>
             
             <div className="mb-6">
               <label className="block text-gray-700 font-semibold mb-2 flex items-center">
-                <span className="emoji">🐮</span>
+                <span className="emoji-cow">🐮</span>
                 Players:
               </label>
               
@@ -113,7 +144,7 @@ export default function Home() {
                       value={player} 
                       onChange={(e) => handlePlayerChange(index, e.target.value)} 
                       placeholder={`Player ${index + 1} name`} 
-                      className="input player-input" 
+                      className="cow-input player-input" 
                       required 
                     />
                     <button 
@@ -132,18 +163,18 @@ export default function Home() {
               <button 
                 type="button" 
                 onClick={handleAddPlayer} 
-                className="mt-3 flex items-center text-blue-600 hover:text-blue-800"
+                className="mt-3 flex items-center text-amber-700 hover:text-amber-900"
               >
-                <span className="emoji">+</span> Add Another Player
+                <span className="emoji-cow">🐮</span> Add Another Player
               </button>
             </div>
             
             <div className="text-center mt-8">
               <button 
                 type="submit" 
-                className="button inline-flex items-center"
+                className="cow-button inline-flex items-center"
               >
-                <span className="emoji">🐄</span> Start Herding!
+                <span className="emoji-cow">🐄</span> Start Herding!
               </button>
             </div>
           </form>
