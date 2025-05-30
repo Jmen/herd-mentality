@@ -81,7 +81,7 @@ export default function PlayPage() {
   }
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-8 cow-pattern">
       <div className="container mx-auto section-spacing">
         <header className="text-center mb-8 relative">
           <div className="inline-block relative">
@@ -92,14 +92,15 @@ export default function PlayPage() {
         </header>
         
         <main>
-          <div className="card p-6 max-w-2xl mx-auto">
+          <div className="cow-card p-6 max-w-2xl mx-auto">
+            <div className="cow-spots"></div>
             <div className="flex justify-between items-center mb-6">
               <div className="flex items-center">
-                <span className="emoji">🐮</span>
+                <span className="emoji-cow">🐮</span>
                 <h2 className="text-2xl font-bold">Round {currentRound} of {totalRounds}</h2>
               </div>
-              <span className="badge">
-                <span className="emoji">🐄</span> Question {currentRound}/{totalRounds}
+              <span className="cow-badge">
+                <span className="emoji-cow">🐄</span> Question {currentRound}/{totalRounds}
               </span>
             </div>
             
@@ -112,7 +113,7 @@ export default function PlayPage() {
                 {players.map(player => (
                   <div key={player} className="border p-6 rounded-md relative mb-6">
                     <div className="flex items-center mb-2">
-                      <span className="emoji">🐄</span>
+                      <span className="emoji-cow">🐄</span>
                       <label htmlFor={player} className="block text-gray-700 font-semibold">{player}&apos;s Answer:</label>
                     </div>
                     <input 
@@ -120,24 +121,28 @@ export default function PlayPage() {
                       id={player} 
                       value={answers[player] || ''} 
                       onChange={(e) => handleAnswerChange(player, e.target.value)} 
-                      className="input answer-input" 
+                      className="cow-input answer-input" 
                       required 
                     />
                     <p className="text-sm text-gray-500 mt-1 flex items-center">
                       <span className="emoji text-yellow-500">⚠️</span>
                       Other players should look away when it&apos;s not their turn!
                     </p>
-                    <div className="absolute top-2 right-2 opacity-20">🐮</div>
+                    <div className="absolute top-2 right-2 opacity-20 emoji-cow">🐮</div>
                   </div>
                 ))}
+              </div>
+              
+              <div className="cow-divider">
+                <span className="emoji-bounce">🐮</span>
               </div>
               
               <div className="text-center mt-6">
                 <button 
                   type="submit" 
-                  className="button inline-flex items-center"
+                  className="cow-button inline-flex items-center"
                 >
-                  <span className="emoji">🐄</span> Submit Herd Answers
+                  <span className="emoji-cow">🐄</span> Submit Herd Answers
                 </button>
               </div>
             </form>

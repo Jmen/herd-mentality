@@ -61,6 +61,17 @@
   100% { transform: scale(1); }
 }
 
+@keyframes moo {
+  0% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  100% { transform: rotate(-5deg); }
+}
+
+@keyframes cowBounce {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -108,6 +119,18 @@ h1, h2, h3 {
   background-color: var(--card);
 }
 
+.cow-card {
+  border-radius: 0.5rem;
+  border: 2px dashed #8d6e63;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  margin: 1.5rem auto;
+  background-color: #fff;
+}
+
 .card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
@@ -116,6 +139,18 @@ h1, h2, h3 {
   display: inline-block;
   margin-right: 0.75rem;
   font-size: 1.25rem;
+}
+
+.emoji-cow {
+  display: inline-block;
+  margin-right: 0.75rem;
+  font-size: 1.5rem;
+  animation: moo 3s infinite ease-in-out;
+}
+
+.emoji-bounce {
+  display: inline-block;
+  animation: cowBounce 2s infinite ease-in-out;
 }
 
 .heading {
@@ -149,6 +184,47 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cow-button {
+  background-color: #8d6e63;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin: 1rem 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(141, 110, 99, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.cow-button:hover {
+  background-color: #6d4c41;
+  box-shadow: 0 6px 8px rgba(141, 110, 99, 0.5);
+  transform: translateY(-2px);
+}
+
+.cow-button::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cow-button:hover::before {
+  opacity: 1;
 }
 
 .button:hover {
@@ -218,6 +294,102 @@ input[type="number"].input {
 .info-box.success {
   background-color: rgba(5, 150, 105, 0.15);
   border-left: 4px solid var(--success);
+}
+
+.cow-pattern {
+  position: relative;
+}
+
+.cow-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(#000 10%, transparent 11%),
+                    radial-gradient(#000 10%, transparent 11%);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  background-repeat: repeat;
+  opacity: 0.01;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cow-spots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.02;
+  background-image: 
+    radial-gradient(#000 20%, transparent 21%),
+    radial-gradient(#000 20%, transparent 21%);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+.cow-input {
+  border: 2px solid #8d6e63;
+  border-radius: 1rem;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  width: 100%;
+  background-color: #fff;
+  color: #4e342e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cow-input:focus {
+  outline: none;
+  border-color: #6d4c41;
+  box-shadow: 0 0 0 3px rgba(141, 110, 99, 0.25);
+}
+
+.cow-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: #d7ccc8;
+  color: #4e342e;
+  border: 1px dashed #8d6e63;
+}
+
+.hoof-print {
+  display: inline-block;
+  font-size: 1.5rem;
+  transform: rotate(30deg);
+  margin: 0 0.25rem;
+  opacity: 0.7;
+}
+
+.cow-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.cow-divider::before,
+.cow-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 2px dashed #8d6e63;
+}
+
+.cow-divider::before {
+  margin-right: 0.5rem;
+}
+
+.cow-divider::after {
+  margin-left: 0.5rem;
 }
 
 .info-box.warning {

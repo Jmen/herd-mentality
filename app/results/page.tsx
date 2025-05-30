@@ -93,7 +93,7 @@ export default function ResultsPage() {
   }
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-8 cow-pattern">
       <div className="container mx-auto section-spacing">
         <header className="text-center mb-8 relative">
           <div className="inline-block relative">
@@ -104,14 +104,15 @@ export default function ResultsPage() {
         </header>
         
         <main>
-          <div className="card p-6 max-w-2xl mx-auto">
+          <div className="cow-card p-6 max-w-2xl mx-auto">
+            <div className="cow-spots"></div>
             <div className="flex justify-between items-center mb-6">
               <div className="flex items-center">
-                <span className="emoji">🐄</span>
+                <span className="emoji-cow">🐄</span>
                 <h2 className="text-2xl font-bold">Herd Results</h2>
               </div>
-              <span className="badge">
-                <span className="emoji">🐮</span> Round {currentRound}/{totalRounds}
+              <span className="cow-badge">
+                <span className="emoji-cow">🐮</span> Round {currentRound}/{totalRounds}
               </span>
             </div>
             
@@ -121,17 +122,21 @@ export default function ResultsPage() {
             
             <div className="info-box success mb-8">
               <div className="flex items-center">
-                <span className="emoji">🥛</span>
+                <span className="emoji-bounce">🥛</span>
                 <p className="text-lg font-medium">The herd&apos;s answer was: &quot;{mostCommon}&quot;</p>
               </div>
               <p className="text-md mt-2 flex items-center">
-                <span className="emoji">🎉</span>
+                <span className="emoji-bounce">🎉</span>
                 Cows in the herd: {winners.join(', ')}
               </p>
             </div>
             
+            <div className="cow-divider">
+              <span className="emoji-cow">🐮</span>
+            </div>
+            
             <h3 className="text-xl font-bold mb-5 flex items-center mt-8">
-              <span className="text-2xl mr-2">🐄</span>
+              <span className="text-2xl mr-2 emoji-cow">🐄</span>
               All Answers
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -145,8 +150,12 @@ export default function ResultsPage() {
               ))}
             </div>
             
+            <div className="cow-divider">
+              <span className="emoji-cow">🐄</span>
+            </div>
+            
             <h3 className="text-xl font-bold mb-5 flex items-center mt-10">
-              <span className="text-2xl mr-2">🏆</span>
+              <span className="text-2xl mr-2 emoji-bounce">🏆</span>
               Current Scores
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -155,7 +164,7 @@ export default function ResultsPage() {
                 .map(([player, score]) => (
                   <div key={player} className="border p-4 rounded-md flex justify-between items-center space-x-8">
                     <span className="font-semibold">{player}</span>
-                    <span className="badge">{score} points</span>
+                    <span className="cow-badge">{score} points</span>
                   </div>
                 ))
               }
@@ -164,9 +173,9 @@ export default function ResultsPage() {
             <div className="text-center mt-6">
               <button 
                 onClick={handleNextRound}
-                className="button inline-flex items-center"
+                className="cow-button inline-flex items-center"
               >
-                <span className="emoji">🐄</span> 
+                <span className="emoji-cow">🐄</span> 
                 {isLastRound ? 'See Final Results' : 'Next Round'}
               </button>
             </div>
