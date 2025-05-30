@@ -60,8 +60,8 @@ export class Question {
     if (!mostCommonAnswer) return [];
 
     return Object.entries(this.answers)
-      .filter(([_, answer]) => answer === mostCommonAnswer)
-      .map(([playerName, _]) => playerName);
+      .filter(([, answer]) => answer === mostCommonAnswer)
+      .map(([playerName]) => playerName);
   }
 }
 

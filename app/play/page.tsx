@@ -47,12 +47,7 @@ export default function PlayPage() {
     setAnswers(Object.fromEntries(players.map((p: string) => [p, ''])));
   }, [router]);
 
-  const getPlayerEmoji = (p: string): string => {
-    const emojis = ['🐮', '🐄', '🐑', '🐐', '🐷', '🐔', '🐰', '🦊'];
-    // Generate a consistent emoji based on player name
-    const charSum = p.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
-    return emojis[charSum % emojis.length];
-  };
+
 
   const handleAnswerChange = (player: string, answer: string) => {
     setAnswers(prev => ({
@@ -118,7 +113,7 @@ export default function PlayPage() {
                   <div key={player} className="border p-6 rounded-md relative mb-6">
                     <div className="flex items-center mb-2">
                       <span className="emoji">🐄</span>
-                      <label htmlFor={player} className="block text-gray-700 font-semibold">{player}'s Answer:</label>
+                      <label htmlFor={player} className="block text-gray-700 font-semibold">{player}&apos;s Answer:</label>
                     </div>
                     <input 
                       type="text" 
@@ -130,7 +125,7 @@ export default function PlayPage() {
                     />
                     <p className="text-sm text-gray-500 mt-1 flex items-center">
                       <span className="emoji text-yellow-500">⚠️</span>
-                      Other players should look away when it's not their turn!
+                      Other players should look away when it&apos;s not their turn!
                     </p>
                     <div className="absolute top-2 right-2 opacity-20">🐮</div>
                   </div>

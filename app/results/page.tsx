@@ -122,7 +122,7 @@ export default function ResultsPage() {
             <div className="info-box success mb-8">
               <div className="flex items-center">
                 <span className="emoji">🥛</span>
-                <p className="text-lg font-medium">The herd's answer was: "{mostCommon}"</p>
+                <p className="text-lg font-medium">The herd&apos;s answer was: &quot;{mostCommon}&quot;</p>
               </div>
               <p className="text-md mt-2 flex items-center">
                 <span className="emoji">🎉</span>
@@ -140,7 +140,7 @@ export default function ResultsPage() {
                   key={player} 
                   className={`border p-4 rounded-md ${winners.includes(player) ? 'bg-green-50 border-green-300' : ''}`}
                 >
-                  <span className="font-semibold">{player}:</span> <span className="ml-2">"{answer}"</span>
+                  <span className="font-semibold">{player}:</span> <span className="ml-2">&quot;{answer}&quot;</span>
                 </div>
               ))}
             </div>

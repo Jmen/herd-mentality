@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 export default function GameOverPage() {
   const router = useRouter();
@@ -81,7 +80,7 @@ export default function GameOverPage() {
               {winners.length === 1 ? (
                 <p className="text-2xl font-bold text-yellow-800">The lead cow is {winners[0]}!</p>
               ) : (
-                <p className="text-2xl font-bold text-yellow-800">It's a tie! The lead cows are {winners.join(', ')}!</p>
+                <p className="text-2xl font-bold text-yellow-800">It&apos;s a tie! The lead cows are {winners.join(', ')}!</p>
               )}
               <p className="text-xl text-yellow-700 mt-2">With {winnerScore} points</p>
               <div className="flex justify-center mt-3">
