@@ -67,6 +67,31 @@ describe('Game', () => {
     expect(game.questions[0]).toBeInstanceOf(Question);
   });
   
+  test('should throw error when starting with fewer than 3 players', () => {
+    // Arrange
+    const game = new Game();
+    game.addPlayer("Alice");
+    game.addPlayer("Bob");
+    
+    // Act & Assert
+    expect(() => {
+      game.start();
+    }).toThrow("Cannot start game with fewer than 3 players");
+  });
+  
+  test('should start game with 3 or more players', () => {
+    // Arrange
+    const game = new Game();
+    game.addPlayer("Alice");
+    game.addPlayer("Bob");
+    game.addPlayer("Charlie");
+    
+    // Act & Assert
+    expect(() => {
+      game.start();
+    }).not.toThrow();
+  });
+  
   test('should add player', () => {
     // Arrange
     const game = new Game();

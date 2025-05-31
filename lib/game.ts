@@ -166,4 +166,14 @@ export class Game {
   getScores(): Scores {
     return this.scores;
   }
+
+  /**
+   * Start the game
+   * Throws an error if there are fewer than 3 players
+   */
+  start(): void {
+    if (this.players.size < 3) {
+      throw new Error("Cannot start game with fewer than 3 players");
+    }
+  }
 }

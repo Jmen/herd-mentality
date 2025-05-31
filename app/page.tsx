@@ -126,7 +126,8 @@ export default function Home() {
                 max="10" 
                 value={numRounds} 
                 onChange={(e) => setNumRounds(parseInt(e.target.value) || 3)} 
-                className="cow-input w-32" 
+                className="cow-input" 
+                style={{width: '4rem'}} 
               />
             </div>
             
